@@ -10,7 +10,7 @@
         android:id="@+id/moneyLable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monies: 0"
+        android:text="Monies:"
         android:textSize="40dp"
         android:layout_centerHorizontal="true"/>
 
@@ -21,7 +21,16 @@
         android:text="CLICK ME!"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="75dp"/>
+        android:textSize="75dp" />
+
+    <TextView
+        android:id="@+id/dollars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="40dp"
+        android:layout_below="@id/moneyLable"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
