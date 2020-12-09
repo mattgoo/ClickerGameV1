@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
-
+        clicker.setPreferences( this );
+        Log.w("MA", "destroyed");
     }
 }

@@ -30,7 +30,9 @@ public class Clicker {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(  context );
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt( "clickerValue", clickValue );
+        //Log.w( "MA", "cv is " + clickValue );
         editor.putInt( "money", money);
+        //Log.w( "MA", "money is " + money );
         editor.putInt( "netWorth", netWorth );
         editor.commit();
     }
@@ -56,6 +58,7 @@ public class Clicker {
         int moniesInt = Integer.parseInt(mString);
         //Log.w( "MA", "monies is " + moniesInt );
         moniesInt += clickValue;
+        money += clickValue;
         //Log.w( "MA", "monies+1 is " + moniesInt );
         mString = String.valueOf(moniesInt);
         //Log.w( "MA", "mString+1 is " + mString );
