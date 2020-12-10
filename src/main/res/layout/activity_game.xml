@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+
+    <Button
+        android:id="@+id/clicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLICK ME!"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="75dp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/dollars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Money: $0"
+        android:textSize="40dp"
+        android:layout_centerHorizontal="true"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dollars"
+        android:layout_above="@id/clicker"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/upgradeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/getHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:text="Get Help? Cost: $50"
+                android:ems="100"
+                android:textSize="35dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+            </Button>
+
+            <Button
+                android:id="@+id/upgrade1"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="100"
+                android:textSize="35dp"
+                android:text="Upgrade 1"></Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

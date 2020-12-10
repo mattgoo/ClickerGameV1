@@ -1,6 +1,8 @@
 package com.mattgoodwin.clickergamev1;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,33 +10,31 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button clickButton;
-    private TextView monies;
-    private Clicker clicker;
+    private Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        clickButton = findViewById(R.id.clicker);
-        monies = findViewById(R.id.dollars);
+        startButton = findViewById(R.id.button);
 
-        clicker = new Clicker( this );
-
-        clickButton.setOnClickListener(new View.OnClickListener(){
+        startButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                clicker.updateMonies(monies);
+                openGame(v);
             }
         });
     }
 
+    public void openGame(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+    }
 
     @Override
-    public void onDestroy(){
-        super.onDestroy();
-        clicker.setPreferences( this );
-        Log.w("MA", "destroyed");
+    public void onResume(){
+        super.onResume();
     }
+
 }

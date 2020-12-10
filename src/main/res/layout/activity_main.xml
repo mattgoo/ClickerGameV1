@@ -6,31 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:id="@+id/moneyLable"
+        android:id="@+id/gameLable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monies:"
+        android:text="Start?"
         android:textSize="40dp"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:id="@+id/clicker"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLICK ME!"
+        android:text="Yes"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="75dp" />
-
-    <TextView
-        android:id="@+id/dollars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="40dp"
-        android:layout_below="@id/moneyLable"
-        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
