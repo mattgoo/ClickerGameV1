@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/dollars"
-        android:layout_above="@id/clicker"
+        android:layout_above="@id/helpTier"
         android:layout_margin="10dp">
 
         <LinearLayout
@@ -41,25 +41,65 @@
             <Button
                 android:id="@+id/getHelp"
                 android:layout_width="wrap_content"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:text="Get Help? Cost: $50"
                 android:ems="100"
-                android:textSize="35dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true">
+                android:textSize="35dp">
             </Button>
 
             <Button
                 android:id="@+id/upgrade1"
                 android:layout_width="wrap_content"
-                android:layout_height="90dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
                 android:ems="100"
                 android:textSize="35dp"
-                android:text="Upgrade 1"></Button>
+                android:text="Upgrade #1 Cost: $10"></Button>
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/helpTier"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Help Tier: 0"
+        android:layout_above="@id/clicker"
+        android:layout_centerHorizontal="true"
+        android:textSize="35dp"
+        android:background=""
+
+        android:layout_margin="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/clickTier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clicker Tier: 0"
+        android:layout_above="@id/clicker"
+        android:layout_toLeftOf="@id/helpTier"
+        android:textSize="35dp"
+
+        android:layout_margin="10dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/doubleButton"
+
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+        android:layout_alignBottom="@id/helpTier"
+        android:layout_alignTop="@id/helpTier"
+        android:layout_alignRight="@id/clicker"
+
+        android:text="Double Money?"
+        android:textSize="20dp"
+
+        android:layout_toRightOf="@id/helpTier"
+        android:layout_above="@id/clicker"
+        android:layout_margin="10dp"
+        />
+
 
 </RelativeLayout>
