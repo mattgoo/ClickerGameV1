@@ -18,15 +18,18 @@ public class Clicker {
     private int help;
     private DecimalFormat CASH = new DecimalFormat("$###,###,###,##0");
 
+    private int netWorth;
+
 
     public Clicker( Context context ) {
         //setMoney(0);
         //setClickValue(1);
         //setHelp(0);
+        //setWallet(0);
         setHelpCost(50);
         setUpgrade1Cost(10);
-        //setHelpers(0);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(  context );
+
         setClickValue( pref.getInt( "clickerValue", 1 ) );
         setMoney( pref.getInt( "money", 0 ) );
         setHelp( pref.getInt("help", 0));
@@ -77,6 +80,11 @@ public class Clicker {
 
     public String moneyString(){
         return "Money: " + CASH.format(money);
+    }
+
+
+    public void walletString(TextView view) {
+        view.setText("Wallet: " + CASH.format(money));
     }
 
     public void doubleRewards(TextView cv, TextView helpView){
