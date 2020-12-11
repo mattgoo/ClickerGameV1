@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //openAd();
+                openAd();
                 clicker.doubleRewards(clickValue, helpers);
             }
         });
@@ -124,8 +124,8 @@ public class GameActivity extends AppCompatActivity {
      */
 
     public void openAd(){
-        //Intent intent = new Intent( this, AdActivity.class );
-        //startActivity( intent );
+        Intent intent = new Intent( this, AdActivity.class );
+        startActivity( intent );
     }
 
     @Override
