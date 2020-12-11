@@ -13,7 +13,6 @@ import java.text.DecimalFormat;
 public class Clicker {
     private int clickValue;
     private int money;
-    private int netWorth;
     private int upgrade1cost;
     private int helpCost;
     private int help;
@@ -21,17 +20,16 @@ public class Clicker {
 
 
     public Clicker( Context context ) {
-        setMoney(0);
-        setClickValue(1);
-        setHelp(0);
-        setNetWorth(0);
+        //setMoney(0);
+        //setClickValue(1);
+        //setHelp(0);
         setHelpCost(50);
         setUpgrade1Cost(10);
         //setHelpers(0);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(  context );
-        //setClickValue( pref.getInt( "clickerValue", 1 ) );
-        //setMoney( pref.getInt( "money", 0 ) );
-        //setNetWorth( pref.getInt("netWorth", 0));
+        setClickValue( pref.getInt( "clickerValue", 1 ) );
+        setMoney( pref.getInt( "money", 0 ) );
+        setHelp( pref.getInt("help", 0));
     }
 
 
@@ -40,7 +38,7 @@ public class Clicker {
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt( "clickerValue", clickValue );
         editor.putInt( "money", money);
-        editor.putInt( "netWorth", netWorth );
+        editor.putInt( "help", help );
 
         Log.w( "MA", "money is " + money );
         Log.w( "MA", "cv is " + clickValue );
@@ -64,10 +62,6 @@ public class Clicker {
         help = newHelp;
     }
 
-    public void setNetWorth( int newNetWorth ) {
-        netWorth = newNetWorth;
-    }
-
     public void setMoneyLable(TextView view){
         view.setText(moneyString());
     }
@@ -80,18 +74,24 @@ public class Clicker {
         upgrade1cost = newCost;
     }
 
-    public void setHelpers(int newHelp){
-        help = newHelp;
-    }
-
 
     public String moneyString(){
         return "Money: " + CASH.format(money);
     }
 
+    public void doubleRewards(TextView cv, TextView helpView){
+        clickValue = clickValue * 2;
+        help = help * 2;
+        cv.setText("Clicker Value: $" + String.valueOf(clickValue));
+        helpView.setText("Help: " + String.valueOf(help));
+    }
 
 
-
+    public void updateViews(TextView cv, TextView helpView, TextView income){
+        cv.setText("Clicker Value: $" + String.valueOf(clickValue));
+        helpView.setText("Help: " + String.valueOf(help));
+        income.setText("$/sec: $" + String.valueOf(help * 2));
+    }
 
 
 
@@ -114,16 +114,17 @@ public class Clicker {
             money -= upgrade1cost;
             clickValue++;
             view.setText(moneyString());
-            value.setText("Clicker Vlaue: $" + String.valueOf(clickValue));
+            value.setText("Clicker Value: $" + String.valueOf(clickValue));
         }
     }
 
-    public void firstHelp(TextView view, TextView tier){
-        if ( money >= 50){
-            money -= 50;
+    public void firstHelp(TextView view, TextView tier, TextView income){
+        if ( money >= helpCost){
+            money -= helpCost;
             help++;
             view.setText(moneyString());
-            tier.setText("Helpers" + String.valueOf(help));
+            tier.setText("Help: " + String.valueOf(help));
+            income.setText("$/sec: $" + String.valueOf(help * 2));
         }
     }
 

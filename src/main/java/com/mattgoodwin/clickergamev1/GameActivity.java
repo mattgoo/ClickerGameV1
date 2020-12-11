@@ -1,6 +1,9 @@
 package com.mattgoodwin.clickergamev1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,6 +27,9 @@ public class GameActivity extends AppCompatActivity {
     private TextView clickValue;
     private TextView helpers;
     private TextView doublePoints;
+    private TextView income;
+
+    AlertDialog.Builder alert;
 
 
 
@@ -39,10 +45,22 @@ public class GameActivity extends AppCompatActivity {
         clickValue = findViewById(R.id.clickValue);
         helpers = findViewById(R.id.helpers);
         doublePoints = findViewById(R.id.doublePoints);
+        income = findViewById(R.id.dollarPerSec);
+
+
+        alert = new AlertDialog.Builder(this);
+        alert.setTitle("Ad?");
+        alert.setMessage("Do you want to see an ad for double click value and double help?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
 
 
         clicker = new Clicker( this );
-
+        clicker. updateViews(clickValue, helpers, income);
 
         clickButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -54,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicker.firstHelp(monies, helpers);
+                clicker.firstHelp(monies, helpers, income);
             }
         });
 
@@ -68,7 +86,7 @@ public class GameActivity extends AppCompatActivity {
         doublePoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                clicker.doubleRewards(clickValue, helpers);
             }
         });
 
@@ -78,14 +96,11 @@ public class GameActivity extends AppCompatActivity {
         runnableCode = new Runnable() {
             @Override
             public void run() {
-                // Do something here on the main thread
                 clicker.addHelp(monies);
-                Log.w("Handlers", "Called on main thread");
-                // Repeat this the same runnable code block again another 2 seconds
+                Log.w("MA", "run");
                 handler.postDelayed(runnableCode, 500);
             }
         };
-        // Start the initial runnable task by posting through the handler
         handler.post(runnableCode);
 
     }

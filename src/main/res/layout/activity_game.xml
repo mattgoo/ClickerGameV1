@@ -84,7 +84,7 @@
         android:id="@+id/clickValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clicker Value: $0"
+        android:text="Clicker Value: $1"
         android:layout_above="@id/clicker"
         android:layout_toLeftOf="@id/helpers"
         android:textSize="30dp"
