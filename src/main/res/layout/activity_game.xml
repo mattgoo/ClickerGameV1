@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:ems="100"
                 android:textSize="35dp"
-                android:text="Upgrade #1 Cost: $10"></Button>
+                android:text="Click Upgrade? Cost: $10"></Button>
 
         </LinearLayout>
     </ScrollView>

@@ -1,3 +1,10 @@
+/*
+Matt Goodwin
+CS489
+Prof. Franceschi
+12/11/2020
+ */
+
 package com.mattgoodwin.clickergamev1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openGame(v);
+                overridePendingTransition(R.anim.slide_up_bot, R.anim.slide_up_top);
             }
         });
     }
