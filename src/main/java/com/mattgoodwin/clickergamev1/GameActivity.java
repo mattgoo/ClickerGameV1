@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -48,15 +49,24 @@ public class GameActivity extends AppCompatActivity {
         income = findViewById(R.id.dollarPerSec);
 
 
+
         alert = new AlertDialog.Builder(this);
         alert.setTitle("Ad?");
         alert.setMessage("Do you want to see an ad for double click value and double help?");
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                //openAd();
+                clicker.doubleRewards(clickValue, helpers);
             }
         });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+
 
 
         clicker = new Clicker( this );
@@ -86,7 +96,7 @@ public class GameActivity extends AppCompatActivity {
         doublePoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicker.doubleRewards(clickValue, helpers);
+                alert.show();
             }
         });
 
@@ -112,6 +122,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
      */
+
+    public void openAd(){
+        //Intent intent = new Intent( this, AdActivity.class );
+        //startActivity( intent );
+    }
 
     @Override
     protected void onResume( ) {
