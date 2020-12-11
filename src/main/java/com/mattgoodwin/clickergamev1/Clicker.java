@@ -27,6 +27,7 @@ public class Clicker {
         setNetWorth(0);
         setHelpCost(50);
         setUpgrade1Cost(10);
+        //setHelpers(0);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(  context );
         //setClickValue( pref.getInt( "clickerValue", 1 ) );
         //setMoney( pref.getInt( "money", 0 ) );
@@ -79,6 +80,10 @@ public class Clicker {
         upgrade1cost = newCost;
     }
 
+    public void setHelpers(int newHelp){
+        help = newHelp;
+    }
+
 
     public String moneyString(){
         return "Money: " + CASH.format(money);
@@ -104,25 +109,32 @@ public class Clicker {
         view.setText(moneyString());
     }
 
-    public void upgrade1(TextView view){
+    public void upgrade1(TextView view,TextView value){
         if ( money >= upgrade1cost){
             money -= upgrade1cost;
             clickValue++;
             view.setText(moneyString());
+            value.setText("Clicker Vlaue: $" + String.valueOf(clickValue));
         }
     }
 
-    public void firstHelp(TextView view){
+    public void firstHelp(TextView view, TextView tier){
         if ( money >= 50){
             money -= 50;
             help++;
             view.setText(moneyString());
+            tier.setText("Helpers" + String.valueOf(help));
         }
     }
 
     public void addHelp(TextView view){
         money += help;
         view.setText(moneyString());
+    }
+
+
+    public void income(TextView view){
+
     }
 
 }

@@ -21,6 +21,12 @@ public class GameActivity extends AppCompatActivity {
     private Runnable runnableCode;
     private DecimalFormat CASH = new DecimalFormat("$###,###,###,##0");
 
+    private TextView clickValue;
+    private TextView helpers;
+    private TextView doublePoints;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,11 @@ public class GameActivity extends AppCompatActivity {
         monies = findViewById(R.id.dollars);
         upgrade1button = findViewById(R.id.upgrade1);
         helpButton = findViewById(R.id.getHelp);
+        clickValue = findViewById(R.id.clickValue);
+        helpers = findViewById(R.id.helpers);
+        doublePoints = findViewById(R.id.doublePoints);
+
+
         clicker = new Clicker( this );
 
 
@@ -43,14 +54,21 @@ public class GameActivity extends AppCompatActivity {
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicker.firstHelp(monies);
+                clicker.firstHelp(monies, helpers);
             }
         });
 
         upgrade1button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicker.upgrade1(monies);
+                clicker.upgrade1(monies, clickValue);
+            }
+        });
+
+        doublePoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
             }
         });
 
@@ -64,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
                 clicker.addHelp(monies);
                 Log.w("Handlers", "Called on main thread");
                 // Repeat this the same runnable code block again another 2 seconds
-                handler.postDelayed(runnableCode, 1000);
+                handler.postDelayed(runnableCode, 500);
             }
         };
         // Start the initial runnable task by posting through the handler
